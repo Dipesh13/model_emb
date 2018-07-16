@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier as KNN
 from sklearn.metrics import accuracy_score
-# from get_embedding import sent_embedding
+from get_embedding import sent_embedding
 
 df = pd.read_csv('train.csv')
 
