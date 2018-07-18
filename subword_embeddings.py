@@ -11,11 +11,11 @@ print(data)
 # remove binary = True argument
 model = KeyedVectors.load_word2vec_format("en.wiki.bpe.op3000.d100.w2v.bin",binary=True)
 
-subwords = "▁mel ford shire".split()
+subwords = "ford shire".split()
 print(subwords)
 bpe_embs = model[subwords]
 print(bpe_embs.shape)
-# print(bpe_embs)
+print(bpe_embs)
 print(model.most_similar("shire"))
 
 # print(model.wv.vocab)
