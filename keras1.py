@@ -38,7 +38,7 @@ for sentence in sentences:
 # for a,b in zip(X,y):
 #     print(len(a),b)
 
-X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_state=2)
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_state=2,stratify=y)
 
 # lr = LogisticRegression()
 # knn = KNN()
@@ -62,6 +62,8 @@ model.add(Dense(10,activation='relu'))
 model.add(Dense(3,activation='softmax'))
 
 model.compile(optimizer='adam',metrics=['accuracy'],loss='categorical_crossentropy')
-model.fit(np.array(X_train),np.array(y_train))
+# model.fit(np.array(X_train),np.array(y_train))
+model.fit(np.array(X_train),np.array(y_train),nb_epoch=10)
 
-model.save('keras1.h5')
+# model.save('keras1.h5')
+model.save('keras2.h5')
