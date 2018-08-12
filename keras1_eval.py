@@ -1,13 +1,10 @@
 from keras.models import load_model
 from keras1 import X_test,y_test
+import numpy as np
 
-clf = load_model('keras1.h5')
+# clf = load_model('keras1.h5')
+clf = load_model('keras2.h5')
 
-# for article,gt in zip(X_test,y_test):
-#     predictions = clf.predict(article)
-#     print(predictions,gt)
+# print(clf.summary())
 
-print(clf.summary())
-
-# for art in X_test:
-#     print(clf.predict(art))
+print(clf.predict(np.array(X_test)))
