@@ -18,7 +18,6 @@ from keras.utils import to_categorical
 
 df = pd.read_csv('train.csv')
 
-df = df[df['labels'] != 'test_data_samples']
 # Pre-Processing : remove punctations.
 # digits lower case in sent_embediing.
 # stop words left. use nltk for that
@@ -29,7 +28,7 @@ df['data']= df['data'].apply(lambda x: x.translate(None, string.digits))
 sentences = df['data'].tolist()
 y = df['labels'].tolist()
 # target = to_categorical(y)
-y  = pd.get_dummies(y)
+# y  = pd.get_dummies(y)
 
 X = []
 for sentence in sentences:
@@ -60,11 +59,11 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_stat
 model = Sequential()
 # model.add(Dense(1,input_dim=50,activation='relu'))
 model.add(Dense(1,input_dim=50,activation='sigmoid'))
-model.add(Dense(3,activation='softmax'))
+# model.add(Dense(3,activation='softmax'))
 
-model.compile(optimizer='adam',metrics=['accuracy'],loss='categorical_crossentropy')
+model.compile(optimizer='adam',metrics=['accuracy'],loss='binary_crossentropy')
 # model.fit(np.array(X_train),np.array(y_train))
-model.fit(np.array(X_train),np.array(y_train),epochs=100)
+model.fit(np.array(X_train),np.array(y_train),epochs=10)
 
 # model.save('keras1.h5')
 model.save('keras_logreg.h5')
