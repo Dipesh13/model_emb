@@ -18,9 +18,11 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2,random_stat
 model = Sequential()
 model.add(Dense(10,input_dim=2,activation='relu'))
 model.add(Dense(10,activation='relu'))
-model.add(Dense(2,activation='softmax'))
+# model.add(Dense(2,activation='softmax'))
+model.add(Dense(2,activation='sigmoid'))
 
-model.compile(optimizer='adam',metrics=['accuracy'],loss='categorical_crossentropy')
+# model.compile(optimizer='adam',metrics=['accuracy'],loss='categorical_crossentropy')
+model.compile(optimizer='adam',metrics=['accuracy'],loss='binary_crossentropy')
 # model.fit(np.array(X),np.array(y),nb_epoch=10,validation_data=(X_test,y_test))
 model.fit(np.array(X_train),np.array(y_train),nb_epoch=10)
 
